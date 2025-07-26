@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .section {
+            padding: 50px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-header {
+            padding: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .project-category {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-body {
+            padding: 25px;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-link:hover {
+            opacity: 0.9;
+        }
+
+        .skills-section {
+            background: #f8f9fa;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 8px 0;
+            color: #666;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skill-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-section .section-title::after {
+            background: white;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>WordPress Developer</h1>
+            <p>Crafting exceptional web experiences with expert WordPress development across diverse industries and international markets</p>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number">25+</span>
+                    <span>Projects Delivered</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">6+</span>
+                    <span>Years Experience</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">15+</span>
+                    <span>Industries Served</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5</span>
+                    <span>Countries</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="section">
+                <h2 class="section-title">Featured Projects</h2>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">Xyztec</div>
+                            <div class="project-category">Industrial Technology</div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-description">Advanced bond testing technology platform for semiconductor industry. Complex technical product showcase with automation features and precision engineering focus.</p>
+                            <div class="project-tags">
+                                <span class="tag">B2B</span>
+                                <span class="tag">Technical</span>
+                                <span class="tag">Netherlands</span>
+                            </div>
+                            <a href="https://www.xyztec.com/" class="project-link" target="_blank">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">Propeaq</div>
+                            <div class="project-category">Health Tech</div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-description">Innovative light therapy glasses for sleep optimization and circadian rhythm regulation. Multilingual e-commerce platform with scientific backing and customer testimonials.</p>
+                            <div class="project-tags">
+                                <span class="tag">E-commerce</span>
+                                <span class="tag">Health</span>
+                                <span class="tag">Multilingual</span>
+                            </div>
+                            <a href="https://www.propeaq.com/en/" class="project-link" target="_blank">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">Sanacount</div>
+                            <div class="project-category">Financial Services</div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-description">Professional accounting and tax advisory services platform with business consulting tools and compliance certifications showcase.</p>
+                            <div class="project-tags">
+                                <span class="tag">Professional Services</span>
+                                <span class="tag">Netherlands</span>
+                                <span class="tag">Business Tools</span>
+                            </div>
+                            <a href="https://sanacount.nl/" class="project-link" target="_blank">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">Austin Urogynecology</div>
+                            <div class="project-category">Healthcare</div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-description">Specialized medical practice website focusing on female pelvic medicine and reconstructive surgery with patient-centered design.</p>
+                            <div class="project-tags">
+                                <span class="tag">Healthcare</span>
+                                <span class="tag">USA</span>
+                                <span class="tag">Medical</span>
+                            </div>
+                            <a href="https://www.austinurogynecology.com/" class="project-link" target="_blank">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">Brahmin Solutions</div>
+                            <div class="project-category">SaaS Platform</div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-description">Manufacturing and inventory management software platform with comprehensive support system and global customer base.</p>
+                            <div class="project-tags">
+                                <span class="tag">SaaS</span>
+                                <span class="tag">Manufacturing</span>
+                                <span class="tag">Global</span>
+                            </div>
+                            <a href="https://www.brahmin-solutions.com/" class="project-link" target="_blank">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">UTeach Texas</div>
+                            <div class="project-category">Education</div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-description">University teacher preparation program websites with educational resources and program information for aspiring educators.</p>
+                            <div class="project-tags">
+                                <span class="tag">Education</span>
+                                <span class="tag">University</span>
+                                <span class="tag">Academic</span>
+                            </div>
+                            <a href="https://austin.uteach.utexas.edu/" class="project-link" target="_blank">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">Additional Projects</div>
+                            <div class="project-category">Various Industries</div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-description">Multiple successful projects spanning marketing agencies, startup accelerators, e-commerce platforms, and corporate websites across different markets.</p>
+                            <div class="project-tags">
+                                <span class="tag">Marketing</span>
+                                <span class="tag">E-commerce</span>
+                                <span class="tag">Corporate</span>
+                            </div>
+                            <div style="margin-top: 15px;">
+                                <small style="color: #666;">OneToMarket • Mobilyze • CustomerScope • ScaleAndGrow • Startupbootcamp • Texas Disposal • Locksmith Magazine • And more...</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section skills-section">
+                <h2 class="section-title">Technical Expertise</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>WordPress Development</h3>
+                        <ul class="skill-list">
+                            <li>Custom Theme Development</li>
+                            <li>Plugin Development & Customization</li>
+                            <li>WooCommerce Integration</li>
+                            <li>Multisite Management</li>
+                            <li>Performance Optimization</li>
+                            <li>Security Implementation</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Frontend Technologies</h3>
+                        <ul class="skill-list">
+                            <li>HTML5 & CSS3</li>
+                            <li>JavaScript & jQuery</li>
+                            <li>Responsive Design</li>
+                            <li>Bootstrap Framework</li>
+                            <li>Cross-browser Compatibility</li>
+                            <li>Mobile-first Approach</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Backend & Database</h3>
+                        <ul class="skill-list">
+                            <li>PHP Development</li>
+                            <li>MySQL Database Design</li>
+                            <li>REST API Integration</li>
+                            <li>Custom Post Types</li>
+                            <li>Advanced Custom Fields</li>
+                            <li>Server Management</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Industry Experience</h3>
+                        <ul class="skill-list">
+                            <li>Healthcare & Medical</li>
+                            <li>Financial Services</li>
+                            <li>E-commerce & Retail</li>
+                            <li>Technology & SaaS</li>
+                            <li>Education & Academic</li>
+                            <li>Manufacturing & Industrial</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section contact-section">
+                <h2 class="section-title">Let's Work Together</h2>
+                <div class="contact-info">
+                    <p>Ready to bring your WordPress project to life? I specialize in creating custom, high-performance websites that drive results across industries.</p>
+                </div>
+                <a href="mailto:your.email@example.com" class="cta-button">Get In Touch</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
