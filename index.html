@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WordPress Developer Portfolio</title>
+    <title>Ankita - WordPress Developer Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -102,9 +102,9 @@
             border-radius: 2px;
         }
 
-        .projects-grid {
+        .featured-projects {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
@@ -115,7 +115,6 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
         }
 
         .project-card:hover {
@@ -183,6 +182,78 @@
             opacity: 0.9;
         }
 
+        .all-projects-section {
+            background: #f8f9fa;
+        }
+
+        .projects-list {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .country-section {
+            margin-bottom: 40px;
+        }
+
+        .country-title {
+            color: #667eea;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: background 0.3s ease;
+        }
+
+        .project-item:hover {
+            background: #e3f2fd;
+        }
+
+        .project-info h4 {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .project-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .project-url {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            font-family: monospace;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 2px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .project-url:hover {
+            background: #667eea;
+            color: white;
+        }
+
         .skills-section {
             background: #f8f9fa;
         }
@@ -191,6 +262,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
+            margin-top: 40px;
         }
 
         .skill-category {
@@ -261,6 +333,25 @@
             transform: translateY(-2px);
         }
 
+        .summary-stats {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 30px 0;
+            border-radius: 15px;
+        }
+
+        .summary-stats h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .summary-stats p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -270,51 +361,22 @@
                 padding: 30px 20px;
             }
             
-            .projects-grid {
+            .featured-projects {
                 grid-template-columns: 1fr;
             }
-        }
 
-        /* Enhanced link styling for better visibility */
-        .project-link {
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .project-link:hover::before {
-            left: 100%;
+            .project-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
         }
     </style>
-    <script>
-        // Ensure links work properly
-        document.addEventListener('DOMContentLoaded', function() {
-            const projectLinks = document.querySelectorAll('.project-link');
-            projectLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const url = this.getAttribute('href');
-                    window.open(url, '_blank', 'noopener,noreferrer');
-                });
-            });
-        });
-    </script>
 </head>
 <body>
     <div class="container">
         <div class="hero">
-            <h1>WordPress Developer</h1>
+            <h1>Ankita - WordPress Developer</h1>
             <p>Crafting exceptional web experiences with expert WordPress development across diverse industries and international markets</p>
             
             <div class="stats">
@@ -341,7 +403,7 @@
             <div class="section">
                 <h2 class="section-title">Featured Projects</h2>
                 
-                <div class="projects-grid">
+                <div class="featured-projects">
                     <div class="project-card">
                         <div class="project-header">
                             <div class="project-title">Xyztec</div>
@@ -364,7 +426,7 @@
                             <div class="project-category">Health Tech</div>
                         </div>
                         <div class="project-body">
-                            <p class="project-description">Innovative light therapy glasses for sleep optimization and circadian rhythm regulation. Multilingual e-commerce platform with scientific backing and customer testimonials.</p>
+                            <p class="project-description">Innovative light therapy glasses for sleep optimization and circadian rhythm regulation. Multilingual e-commerce platform with scientific backing.</p>
                             <div class="project-tags">
                                 <span class="tag">E-commerce</span>
                                 <span class="tag">Health</span>
@@ -376,27 +438,11 @@
 
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="project-title">Sanacount</div>
-                            <div class="project-category">Financial Services</div>
-                        </div>
-                        <div class="project-body">
-                            <p class="project-description">Professional accounting and tax advisory services platform with business consulting tools and compliance certifications showcase.</p>
-                            <div class="project-tags">
-                                <span class="tag">Professional Services</span>
-                                <span class="tag">Netherlands</span>
-                                <span class="tag">Business Tools</span>
-                            </div>
-                            <a href="https://sanacount.nl/" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
                             <div class="project-title">Austin Urogynecology</div>
                             <div class="project-category">Healthcare</div>
                         </div>
                         <div class="project-body">
-                            <p class="project-description">Specialized medical practice website focusing on female pelvic medicine and reconstructive surgery with patient-centered design.</p>
+                            <p class="project-description">Specialized medical practice website focusing on female pelvic medicine and reconstructive surgery with patient-centered design and HIPAA compliance.</p>
                             <div class="project-tags">
                                 <span class="tag">Healthcare</span>
                                 <span class="tag">USA</span>
@@ -412,7 +458,7 @@
                             <div class="project-category">SaaS Platform</div>
                         </div>
                         <div class="project-body">
-                            <p class="project-description">Manufacturing and inventory management software platform with comprehensive support system and global customer base.</p>
+                            <p class="project-description">Manufacturing and inventory management software platform with comprehensive support system and global customer base across multiple industries.</p>
                             <div class="project-tags">
                                 <span class="tag">SaaS</span>
                                 <span class="tag">Manufacturing</span>
@@ -421,183 +467,231 @@
                             <a href="https://www.brahmin-solutions.com/" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-title">UTeach Texas</div>
-                            <div class="project-category">Education</div>
-                        </div>
-                        <div class="project-body">
-                            <p class="project-description">University teacher preparation program websites with educational resources and program information for aspiring educators.</p>
-                            <div class="project-tags">
-                                <span class="tag">Education</span>
-                                <span class="tag">University</span>
-                                <span class="tag">Academic</span>
+            <div class="section all-projects-section">
+                <h2 class="section-title">Complete Project Portfolio</h2>
+                
+                <div class="summary-stats">
+                    <h3>25+ Websites Across 5 Countries</h3>
+                    <p>Healthcare • FinTech • E-commerce • SaaS • Education • Manufacturing • And More</p>
+                </div>
+
+                <div class="projects-list">
+                    <div class="country-section">
+                        <h3 class="country-title">🇳🇱 Netherlands Projects</h3>
+                        
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Xyztec</h4>
+                                <p>Industrial Technology - Bond testing technology platform</p>
                             </div>
-                            <a href="https://austin.uteach.utexas.edu/" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
+                            <a href="https://www.xyztec.com/" target="_blank" class="project-url">www.xyztec.com</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Sanacount</h4>
+                                <p>Financial Services - Accounting & tax advisory platform</p>
+                            </div>
+                            <a href="https://sanacount.nl/" target="_blank" class="project-url">sanacount.nl</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>OneToMarket</h4>
+                                <p>Marketing Agency - Digital marketing services</p>
+                            </div>
+                            <a href="https://www.onetomarket.nl/" target="_blank" class="project-url">www.onetomarket.nl</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Flinc Productontwikkeling</h4>
+                                <p>Product Development - Innovation & design services</p>
+                            </div>
+                            <a href="https://www.flincproductontwikkeling.nl/" target="_blank" class="project-url">www.flincproductontwikkeling.nl</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Propeaq</h4>
+                                <p>Health Tech - Light therapy e-commerce platform</p>
+                            </div>
+                            <a href="https://www.propeaq.com/en/" target="_blank" class="project-url">www.propeaq.com</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Mobilyze</h4>
+                                <p>Business Solutions - Mobile business optimization</p>
+                            </div>
+                            <a href="https://mobilyze.nl/" target="_blank" class="project-url">mobilyze.nl</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Yuux</h4>
+                                <p>UX Design - User experience design agency</p>
+                            </div>
+                            <a href="https://yuux.nl/" target="_blank" class="project-url">yuux.nl</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>CustomerScope</h4>
+                                <p>Analytics - Customer analytics platform</p>
+                            </div>
+                            <a href="https://www.customerscope.nl/" target="_blank" class="project-url">www.customerscope.nl</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>LAP Marketing</h4>
+                                <p>Marketing Agency - Digital marketing solutions</p>
+                            </div>
+                            <a href="https://lapmarketing.nl/" target="_blank" class="project-url">lapmarketing.nl</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Scale and Grow</h4>
+                                <p>Business Growth - Business scaling consultancy</p>
+                            </div>
+                            <a href="https://scaleandgrow.nl/" target="_blank" class="project-url">scaleandgrow.nl</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Opbouw in een Week</h4>
+                                <p>Construction - Quick construction services</p>
+                            </div>
+                            <a href="https://offerte.opbouwineenweek.nl/" target="_blank" class="project-url">offerte.opbouwineenweek.nl</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Eco Chalet</h4>
+                                <p>Sustainable Housing - Eco-friendly chalet solutions</p>
+                            </div>
+                            <a href="https://www.eco-chalet.nl/" target="_blank" class="project-url">www.eco-chalet.nl</a>
+                        </div>
+                    </div>
+
+                    <div class="country-section">
+                        <h3 class="country-title">🇺🇸 USA Projects</h3>
+                        
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Austin Urogynecology</h4>
+                                <p>Healthcare - Specialized medical practice</p>
+                            </div>
+                            <a href="https://www.austinurogynecology.com/" target="_blank" class="project-url">www.austinurogynecology.com</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Riverfront Village</h4>
+                                <p>Real Estate - Residential community website</p>
+                            </div>
+                            <a href="http://www.riverfrontvillage.com/" target="_blank" class="project-url">www.riverfrontvillage.com</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>UTeach Austin</h4>
+                                <p>Education - Teacher preparation program</p>
+                            </div>
+                            <a href="https://austin.uteach.utexas.edu/" target="_blank" class="project-url">austin.uteach.utexas.edu</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>UTeach Outreach</h4>
+                                <p>Education - Educational outreach programs</p>
+                            </div>
+                            <a href="https://outreach.uteach.utexas.edu/" target="_blank" class="project-url">outreach.uteach.utexas.edu</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Texas Disposal</h4>
+                                <p>Waste Management - Environmental services company</p>
+                            </div>
+                            <a href="http://www.texasdisposal.com/" target="_blank" class="project-url">www.texasdisposal.com</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Locksmith Magazine</h4>
+                                <p>Industry Publication - Professional trade magazine</p>
+                            </div>
+                            <a href="https://www.locksmithmag.com/" target="_blank" class="project-url">www.locksmithmag.com</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Jane Armes</h4>
+                                <p>Personal Brand - Professional portfolio website</p>
+                            </div>
+                            <a href="https://www.janearmes.com/" target="_blank" class="project-url">www.janearmes.com</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Trip to My Dreams</h4>
+                                <p>Travel - Travel planning platform</p>
+                            </div>
+                            <a href="https://www.triptomydreams.com/" target="_blank" class="project-url">www.triptomydreams.com</a>
+                        </div>
+                    </div>
+
+                    <div class="country-section">
+                        <h3 class="country-title">🌍 India & Global Projects</h3>
+                        
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Mobex</h4>
+                                <p>Technology - Mobile technology solutions</p>
+                            </div>
+                            <a href="http://mobex.in/" target="_blank" class="project-url">mobex.in</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Energy Leader</h4>
+                                <p>Energy Solutions - Sustainable energy consulting</p>
+                            </div>
+                            <a href="http://www.energyleader.com/" target="_blank" class="project-url">www.energyleader.com</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Brahmin Solutions</h4>
+                                <p>SaaS Platform - Manufacturing & inventory management</p>
+                            </div>
+                            <a href="https://www.brahmin-solutions.com/" target="_blank" class="project-url">www.brahmin-solutions.com</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>GBO</h4>
+                                <p>Business Organization - Global business network</p>
+                            </div>
+                            <a href="https://gbo.eu/" target="_blank" class="project-url">gbo.eu</a>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-info">
+                                <h4>Startupbootcamp</h4>
+                                <p>Startup Accelerator - Global startup acceleration program</p>
+                            </div>
+                            <a href="https://www.startupbootcamp.org/" target="_blank" class="project-url">www.startupbootcamp.org</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="section">
-                <h2 class="section-title">Complete Project Portfolio</h2>
-                
-                <div style="background: #f8f9fa; padding: 40px; border-radius: 15px; margin-top: 30px;">
-                    <h3 style="color: #2c3e50; margin-bottom: 30px; font-size: 1.5rem;">All Website Projects (25+ Sites)</h3>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px;">
-                        <div class="project-list-section">
-                            <h4 style="color: #667eea; margin-bottom: 20px; font-size: 1.2rem; border-bottom: 2px solid #667eea; padding-bottom: 10px;">🇳🇱 Netherlands Projects</h4>
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Startupbootcamp</strong> - Startup Accelerator<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Global startup acceleration program</span><br>
-                                    <a href="https://www.startupbootcamp.org/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.startupbootcamp.org</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 30px; text-align: center; padding: 20px; background: white; border-radius: 10px;">
-                        <p style="color: #666; margin: 0; font-size: 1.1rem;">
-                            <strong style="color: #2c3e50;">25+ Websites Delivered</strong> • 
-                            <strong style="color: #2c3e50;">15+ Industries</strong> • 
-                            <strong style="color: #2c3e50;">5 Countries</strong>
-                        </p>
-                    </div>
-                </div>
-            </div>px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Xyztec</strong> - Industrial Technology<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Bond testing technology platform</span><br>
-                                    <a href="https://www.xyztec.com/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.xyztec.com</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Sanacount</strong> - Financial Services<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Accounting & tax advisory platform</span><br>
-                                    <a href="https://sanacount.nl/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ sanacount.nl</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">OneToMarket</strong> - Marketing Agency<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Digital marketing services</span><br>
-                                    <a href="https://www.onetomarket.nl/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.onetomarket.nl</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Flinc Productontwikkeling</strong> - Product Development<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Innovation & design services</span><br>
-                                    <a href="https://www.flincproductontwikkeling.nl/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.flincproductontwikkeling.nl</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Propeaq</strong> - Health Tech<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Light therapy e-commerce platform</span><br>
-                                    <a href="https://www.propeaq.com/en/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.propeaq.com</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Mobilyze</strong> - Business Solutions<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Mobile business optimization</span><br>
-                                    <a href="https://mobilyze.nl/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ mobilyze.nl</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Yuux</strong> - UX Design<br>
-                                    <span style="color: #666; font-size: 0.9rem;">User experience design agency</span><br>
-                                    <a href="https://yuux.nl/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ yuux.nl</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">CustomerScope</strong> - Analytics<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Customer analytics platform</span><br>
-                                    <a href="https://www.customerscope.nl/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.customerscope.nl</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">LAP Marketing</strong> - Marketing Agency<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Digital marketing solutions</span><br>
-                                    <a href="https://lapmarketing.nl/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ lapmarketing.nl</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Scale and Grow</strong> - Business Growth<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Business scaling consultancy</span><br>
-                                    <a href="https://scaleandgrow.nl/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ scaleandgrow.nl</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Opbouw in een Week</strong> - Construction<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Quick construction services</span><br>
-                                    <a href="https://offerte.opbouwineenweek.nl/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ offerte.opbouwineenweek.nl</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Eco Chalet</strong> - Sustainable Housing<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Eco-friendly chalet solutions</span><br>
-                                    <a href="https://www.eco-chalet.nl/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.eco-chalet.nl</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="project-list-section">
-                            <h4 style="color: #667eea; margin-bottom: 20px; font-size: 1.2rem; border-bottom: 2px solid #667eea; padding-bottom: 10px;">🇺🇸 USA Projects</h4>
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Austin Urogynecology</strong> - Healthcare<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Specialized medical practice</span><br>
-                                    <a href="https://www.austinurogynecology.com/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.austinurogynecology.com</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Riverfront Village</strong> - Real Estate<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Residential community website</span><br>
-                                    <a href="http://www.riverfrontvillage.com/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.riverfrontvillage.com</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">UTeach Austin</strong> - Education<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Teacher preparation program</span><br>
-                                    <a href="https://austin.uteach.utexas.edu/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ austin.uteach.utexas.edu</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">UTeach Outreach</strong> - Education<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Educational outreach programs</span><br>
-                                    <a href="https://outreach.uteach.utexas.edu/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ outreach.uteach.utexas.edu</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Texas Disposal</strong> - Waste Management<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Environmental services company</span><br>
-                                    <a href="http://www.texasdisposal.com/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.texasdisposal.com</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Locksmith Magazine</strong> - Industry Publication<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Professional trade magazine</span><br>
-                                    <a href="https://www.locksmithmag.com/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.locksmithmag.com</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Jane Armes</strong> - Personal Brand<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Professional portfolio website</span><br>
-                                    <a href="https://www.janearmes.com/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.janearmes.com</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Trip to My Dreams</strong> - Travel<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Travel planning platform</span><br>
-                                    <a href="https://www.triptomydreams.com/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.triptomydreams.com</a>
-                                </li>
-                            </ul>
-
-                            <h4 style="color: #667eea; margin-bottom: 20px; margin-top: 30px; font-size: 1.2rem; border-bottom: 2px solid #667eea; padding-bottom: 10px;">🇮🇳 India & Global Projects</h4>
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Mobex</strong> - Technology<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Mobile technology solutions</span><br>
-                                    <a href="http://mobex.in/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ mobex.in</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Energy Leader</strong> - Energy Solutions<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Sustainable energy consulting</span><br>
-                                    <a href="http://www.energyleader.com/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.energyleader.com</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">Brahmin Solutions</strong> - SaaS Platform<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Manufacturing & inventory management</span><br>
-                                    <a href="https://www.brahmin-solutions.com/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ www.brahmin-solutions.com</a>
-                                </li>
-                                <li style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                                    <strong style="color: #2c3e50;">GBO</strong> - Business Organization<br>
-                                    <span style="color: #666; font-size: 0.9rem;">Global business network</span><br>
-                                    <a href="https://gbo.eu/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">→ gbo.eu</a>
-                                </li>
-                                <li style="margin-bottom: 15
 
             <div class="section skills-section">
                 <h2 class="section-title">Technical Expertise</h2>
@@ -657,6 +751,7 @@
                 <h2 class="section-title">Let's Work Together</h2>
                 <div class="contact-info">
                     <p>Ready to bring your WordPress project to life? I specialize in creating custom, high-performance websites that drive results across industries.</p>
+                    <p style="margin-top: 20px;"><strong>Portfolio:</strong> https://ankitawpdev.github.io</p>
                 </div>
                 <a href="mailto:your.email@example.com" class="cta-button">Get In Touch</a>
             </div>
